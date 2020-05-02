@@ -247,3 +247,7 @@ modules.xml
 # mypy
 
 # Pyre type checker
+
+# Others
+.env
+.local_settings
