@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'url_shortener'
+
+    # local
+    'user.apps.UserConfig',
+    'shortener.apps.ShortenerConfig'
 ]
 
 MIDDLEWARE = [
@@ -53,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'url_shortener.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'url_shortener.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
