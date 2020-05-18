@@ -248,6 +248,17 @@ modules.xml
 
 # Pyre type checker
 
+### Redis ###
+# Ignore redis binary dump (dump.rdb) files
+
+*.rdb
+
+### VisualStudioCode ###
+.vscode
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
 # Others
 .env
-.local_settings

@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 from shortener.views import IndexView
+from user.views import SignupView, LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view())
+    path('signup/', SignupView.as_view(), name='signup'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('', IndexView.as_view(), name='index')
 ]

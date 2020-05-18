@@ -15,7 +15,7 @@ admin.site = admin_site
 
 
 class UserAdmin(_UserAdmin):
-    pass
+    list_display = ('username', 'email', 'is_active')
 
 
 admin_site.register(User, UserAdmin)

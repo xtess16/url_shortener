@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  Login View<br>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      {{ field.errors }}
+      {{ field.label_tag }}
+      {{ field }}
+      <br>
+    {% endfor %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <input type="submit" value="Войти">
+  {% if form.errors %}
+    <br><br>
+    <p>Вы ввели неверный логин или пароль. Либо ваш аккаунт не активирован</p>
+  {% endif %}
+  </form>
+{% endblock %}
