@@ -1,0 +1,10 @@
+<div class="card link mb-3 mx-auto col-9">
+  <div class="card-body">
+    <h2 class="card-title link-title"><a href="{% url 'link_detail' link.pk %}">{{ link.title }}</a></h2>
+    <h5 class="card-title link-full-link">{{ link.short_link_with_hostname }}</h5>
+    <h6 class="text-muted">{{ link.full_link }}</h6>
+    {% if link.description %}
+      <p class="card-text mt-4">{{ link.description }}</p>
+    {% endif %}
+  </div>
+</div>

@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block link %}
+  <link rel="stylesheet" href="{% static 'css/link.css' %}">
+{% endblock %}
 {% block content %}
-  Index View
-  {{ request.user.username }}
+  {% if links %}
+    {% for link in links %}
+      {% include 'included_items/link.html' %}
+    {% endfor %}
+  {% else %}
+    <div class="container text-center empty-links-text">
+      <h1>Тут пока пусто :(</h1>
+      <h6><a href="{% url 'create_link' %}">Создайте</a> новую ссылку</h6>
+    </div>
+  {% endif %}
 {% endblock %}

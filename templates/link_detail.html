@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="link-detail-card card">
+    <div class="card-body">
+      <h3 class="link-title card-title float-right">{{ link.title }}</h3>
+      <h4 class="link-full-link card-title">{{ link.full_link }}</h4>
+      <h6 class="link-short-link card-subtitle text-muted ml-2">{{ link.short_link_with_hostname }}</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+      {% for transition in transitions %}
+        <li class="list-group-item transition-item">
+          <div class="mb-3">
+            <span class="transition-title transition-dt mr-4">{{ transition.transition_datetime }}</span>
+            <span class="transition-title transition-ip">IP: {{ transition.ip }}</span>
+          </div>
+          <div class="row">
+            <span class="col transition-data transition-country">{{ transition.country }}</span>
+            <span class="col transition-data transition-region">{{ transition.region }}</span>
+            <span class="col transition-data transition-city">{{ transition.city }}</span>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

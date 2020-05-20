@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin as _UserAdmin, GroupAdmin
 
-from user.models import User, UserGroup
+from user.models import User, UserGroup, UserSettings
 
 
 class UserSite(AdminSite):
@@ -18,5 +18,10 @@ class UserAdmin(_UserAdmin):
     list_display = ('username', 'email', 'is_active')
 
 
+class UserSettingsAdmin(admin.ModelAdmin):
+    pass
+
+
 admin_site.register(User, UserAdmin)
+admin_site.register(UserSettings, UserSettingsAdmin)
 admin_site.register(UserGroup, GroupAdmin)

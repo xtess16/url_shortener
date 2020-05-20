@@ -1,0 +1,13 @@
+.link .card-text {
+  text-indent: 20px;
+}
+
+.link .link-title a {
+  color: #a2af;
+  text-decoration: None;
+}
+
+.link .link-title a:hover {
+  text-decoration: None;
+  color: #b3bf
+}

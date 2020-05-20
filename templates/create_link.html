@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block link %}
+{#  <link rel="stylesheet" href="{% static 'css/reg_auth_forms.css' %}">#}
+{% endblock %}
+{% block content %}
+  <form method="post" class="w-50 mx-auto">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Создать</button>
+  </form>
+{% endblock %}

@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
     # local
     'user.apps.UserConfig',
-    'shortener.apps.ShortenerConfig'
+    'shortener.apps.ShortenerConfig',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -147,6 +148,9 @@ try:
     GEO_LOCATOR = GeoLocator(os.path.join(BASE_DIR, 'data', 'city_by_ip.dat'))
 except FileNotFoundError:
     GEO_LOCATOR = None
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+HOSTNAME = os.getenv('HOSTNAME')
 
 try:
     from .local_settings import *

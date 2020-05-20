@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView as SuperLoginView, LogoutView as SuperLogoutView
 from django.urls import reverse
 from django.views.generic import FormView
-
+from shortener.models import URL
 from user.forms import SignupForm, LoginForm
 
 
@@ -23,9 +23,11 @@ class SignupView(FormView):
 class LoginView(SuperLoginView):
     template_name = 'login.html'
     authentication_form = LoginForm
-    #
-    # def get_success_url(self):
-    #     return reverse('index')
+
+    def get_success_url(self):
+        if not URL.objects.filter(owner=self.request.user).exists():
+            return reverse('create_link')
+        return super().get_success_url()
 
 
 class LogoutView(SuperLogoutView):

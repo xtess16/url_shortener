@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from shortener.views import IndexView
+from shortener.views import IndexView, CreateLinkView, RedirectView, LinkDetailView
 from user.views import SignupView, LoginView, LogoutView
 
 urlpatterns = [
@@ -24,5 +24,9 @@ urlpatterns = [
     path('signup/', SignupView.as_view(), name='signup'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('', IndexView.as_view(), name='index')
+    path('create-link/', CreateLinkView.as_view(), name='create_link'),
+    path('detail/<int:pk>', LinkDetailView.as_view(), name='link_detail'),
+
+    path('r/<str:short_link>/', RedirectView.as_view(), name='redirect'),
+    path('', IndexView.as_view(), name='index'),
 ]

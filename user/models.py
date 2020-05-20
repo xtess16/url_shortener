@@ -17,10 +17,10 @@ class User(AbstractUser):
     email_token = models.CharField(verbose_name='Токен для подтверждения почты', max_length=32, blank=True)
     is_email_confirmed = models.BooleanField(verbose_name='Email подтвержден?', default=False)
 
-    def generate_email_token(self, commit=True) -> str:
+    def generate_email_token(self, *, commit=True) -> str:
         """
             Генерирует email токен для подтверждения и делает пользователя неактивным
-        :param commit: заносить изменения в бд или нет
+        :param commit: заносить изменения в БД или нет
         :return: Сгенерированный токен
         """
         token = random.choices(string.ascii_letters + string.digits, k=32)
