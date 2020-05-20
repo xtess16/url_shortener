@@ -124,11 +124,19 @@ footer {
 }
 
 .link-detail-card .link-title {
-  color: #b5b9
+  color: #50a9
 }
 
 .link-detail-card .link-full-link {
-  color: #abc;
+  color: #52b9;
+}
+
+.link-detail-card .transition-text {
+  font-size: 1.7em;
+  color: #9199;
+}
+.link-detail-card .transition-item {
+  border: 1px solid #a2a3 !important;
 }
 
 .transition-item .transition-title {
@@ -144,9 +152,14 @@ footer {
 }
 
 .transition-item .transition-data:nth-child(2n+1) {
-  color: #829f;
+  color: #829a;
 }
 
 .transition-item .transition-data:nth-child(2n) {
-  color: #f28f;
+  color: #f28a;
+}
+
+.transition-item .transition-coord {
+  font-size: .6em;
+  color: #2226;
 }
