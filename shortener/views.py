@@ -24,7 +24,6 @@ class CreateLinkView(LoginRequiredMixin, CreateView):
         return reverse('index')
 
     def form_valid(self, form):
-        print('form valid')
         url = form.save(commit=False)
         url.owner = self.request.user
         url.generate_short_link(commit=False)
@@ -54,7 +53,9 @@ class RedirectView(SuperRedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         short_link = kwargs['short_link']
+        # TODO: USER_AGENT добавить в модель
         print(self.request.META.get('HTTP_X_FORWARDED_FOR'))
+        print(self.request.META.get('HTTP_USER_AGENT'))
         try:
             if len(short_link) != URL.short_link_length:
                 raise Http404
