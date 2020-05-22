@@ -1,6 +1,7 @@
 asgiref==3.2.7
 Django==3.0.5
 django-crispy-forms==1.9.1
+wheel
 psycopg2==2.8.5
 pysyge==1.2.0
 python-dotenv==0.13.0

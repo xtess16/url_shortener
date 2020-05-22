@@ -142,7 +142,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 try:
     GEO_LOCATOR = GeoLocator(os.path.join(BASE_DIR, 'data', 'city_by_ip.dat'))
