@@ -1,9 +1,11 @@
+import os
 import random
 import string
 from urllib.parse import urljoin
 
 import pytz
 from django.db import models
+from django.urls import reverse
 
 from core import settings
 from core.settings import GEO_LOCATOR
@@ -37,7 +39,7 @@ class URL(models.Model):
 
     @property
     def short_link_with_hostname(self):
-        return urljoin(settings.HOSTNAME, 'r/') + self.short_link
+        return urljoin(os.getenv('SITE_ADDRESS'), reverse('redirect', args=(self.short_link, )))
 
     def __str__(self):
         return f'{self.title} ({self.owner})'
