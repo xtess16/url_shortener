@@ -49,6 +49,7 @@ class Transition(models.Model):
         verbose_name_plural = 'Переходы по ссылкам'
 
     ip = models.CharField(verbose_name='IP', max_length=40, blank=True)
+    user_agent = models.CharField(verbose_name='User Agent', max_length=1024, blank=True)
     url = models.ForeignKey(URL, verbose_name='URL', on_delete=models.CASCADE)
     transition_datetime = models.DateTimeField(verbose_name='Дата и время перехода', auto_now_add=True)
     latitude = models.FloatField(verbose_name='Широта', null=True)

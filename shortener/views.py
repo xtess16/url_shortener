@@ -44,7 +44,7 @@ class LinkDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['transitions'] = self.object.transition_set.order_by('-transition_datetime')[:10]
+        context['transitions'] = self.object.transition_set.order_by('-transition_datetime')
         return context
 
 
@@ -54,6 +54,7 @@ class RedirectView(SuperRedirectView):
     def get_redirect_url(self, *args, **kwargs):
         short_link = kwargs['short_link']
         # TODO: USER_AGENT добавить в модель
+        print(self.request.META.get('REMOTE_ADDR'))
         print(self.request.META.get('HTTP_X_FORWARDED_FOR'))
         print(self.request.META.get('HTTP_USER_AGENT'))
         try:
@@ -63,7 +64,11 @@ class RedirectView(SuperRedirectView):
         except ObjectDoesNotExist:
             raise Http404
         else:
-            transition = Transition(ip=self.request.META.get('REMOTE_ADDR', ''), url=url)
+            transition = Transition(
+                ip=self.request.META.get('REMOTE_ADDR', ''),
+                url=url,
+                user_agent=self.request.META.get('HTTP_USER_AGENT', '')
+            )
             transition.set_location(commit=False)
             transition.save()
             return url.full_link
