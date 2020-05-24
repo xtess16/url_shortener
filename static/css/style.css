@@ -124,7 +124,8 @@ footer {
 }
 
 .link-detail-card .link-title {
-  color: #50a9
+  color: #50a9;
+  cursor: pointer;
 }
 
 .link-detail-card .link-full-link {
@@ -162,4 +163,15 @@ footer {
 .transition-item .transition-coord {
   font-size: .6em;
   color: #2226;
+}
+
+/* Модальное окно изменения заголовка ссылки */
+.title-title-modal, #title-save-modal {
+  background-color: #727c;
+  color: #fffe;
+}
+
+#title-value-modal:focus {
+  box-shadow: none;
+  border: 1px solid #a2b9;
 }

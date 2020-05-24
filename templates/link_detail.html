@@ -1,9 +1,35 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
   <div class="link-detail-card card">
     <div class="card-body">
-      <h3 class="link-title card-title float-right">{{ link.title }}</h3>
+      <h3 class="link-title card-title float-right" data-toggle="modal" data-target="#title-modal">{{ link.title }}</h3>
+      <!-- Модальное окно для изменения заголовки -->
+      <div class="modal fade" id="title-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5>Изменение заголовка</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text title-title-modal">Заголовок</span>
+                </div>
+                  <input type="text" class="form-control" value="{{ link.title }}" style="outline: none" aria-describedby="link-title-modal" id="title-value-modal">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" id="title-save-modal">Сохранить изменения</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Конец модального окна -->
       <h4 class="link-full-link card-title">{{ link.full_link }}</h4>
       <h6 class="link-short-link card-subtitle text-muted ml-2">{{ link.short_link_with_hostname }}</h6>
     </div>
@@ -30,4 +56,8 @@
       </ul>
     </div>
   </div>
+{% endblock %}
+
+{% block body_script %}
+  <script src="{% static 'js/link_detail.js' %}"></script>
 {% endblock %}
