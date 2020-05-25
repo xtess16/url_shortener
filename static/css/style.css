@@ -130,6 +130,7 @@ footer {
 
 .link-detail-card .link-full-link {
   color: #52b9;
+  cursor: pointer;
 }
 
 .link-detail-card .transition-text {
@@ -165,13 +166,17 @@ footer {
   color: #2226;
 }
 
-/* Модальное окно изменения заголовка ссылки */
-.title-title-modal, #title-save-modal {
+/* Модальное окно изменения заголовка ссылки, полной ссылки */
+.save-modal, .label-modal {
   background-color: #727c;
   color: #fffe;
 }
 
-#title-value-modal:focus {
+.save-modal:active, .save-modal:hover {
+  color: #ffff
+}
+
+#title-value-modal:focus, #full-link-value-modal:focus {
   box-shadow: none;
   border: 1px solid #a2b9;
 }
