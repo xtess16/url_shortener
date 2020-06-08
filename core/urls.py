@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from core import settings
 from shortener.views import IndexView, CreateLinkView, RedirectView, LinkDetailView
@@ -30,5 +30,6 @@ urlpatterns = [
     path('detail/<int:pk>', LinkDetailView.as_view(), name='link_detail'),
 
     path('r/<str:short_link>/', RedirectView.as_view(), name='redirect'),
+    path('api/', include('api.urls'), name='api'),
     path('', IndexView.as_view(), name='index'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
